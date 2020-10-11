@@ -1,6 +1,7 @@
 package com.hzw.opengles.introduction;
 
 import android.opengl.GLES20;
+import android.util.Log;
 
 import com.hzw.opengles.introduction.util.OpenGlUtils;
 
@@ -11,6 +12,8 @@ import java.util.LinkedList;
  * 负责显示一张图片
  */
 public class GLImageHandler {
+    private static final String TAG=GLImageHandler.class.getSimpleName();
+
     // 数据中有多少个顶点，管线就调用多少次顶点着色器
     public static final String NO_FILTER_VERTEX_SHADER = "" +
             "attribute vec4 position;\n" + // 顶点着色器的顶点坐标,由外部程序传入
@@ -51,6 +54,7 @@ public class GLImageHandler {
         mRunOnDraw = new LinkedList<Runnable>();
         mVertexShader = vertexShader;
         mFragmentShader = fragmentShader;
+        Log.d(TAG,"mVertexShader=\n"+mVertexShader+"\nmFragmentShader=\n"+mFragmentShader);
     }
 
     public final void init() {
